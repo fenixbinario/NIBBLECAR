@@ -29,10 +29,10 @@ en el momento que se realiza la carga del codigo (Sketch) al Arduino.
 #include <SoftwareSerial.h>
 
 SoftwareSerial BT(4, 2); 
-// creates a "virtual" serial port/UART
-// connect BT module TX to D9
-// connect BT module RX to D3
-// connect BT Vcc to 5V, GND to GND
+// crear un "virtual" serial port/UART
+// connectar BT módulo TX a D9
+// connectar BT módulo RX a D3
+// connectar BT Vcc a 5V, GND a GND
 int izqA = 5;
 int izqB = 6; 
 int derA = 9; 
@@ -41,28 +41,28 @@ int vel = 255;
 
 void setup()  
 {
-  // set digital pin to control as an output
+  // control de pines
   pinMode(13, OUTPUT);
   pinMode(derA, OUTPUT);
   pinMode(derB, OUTPUT);
   pinMode(izqA, OUTPUT);
   pinMode(izqB, OUTPUT);
 
-  // set the data rate for the SoftwareSerial port
+  // baulios del puerto serie
   BT.begin(9600);
 
-  // Send test message to other device
-  BT.println("Hello from Arduino");
+  // Enviar mensaje por bluetooth
+  BT.println("NIBBLECAR esta conectado");
 }
 
-char a; // stores incoming character from other device
+char a; // lee el bluetooth el caracter y almacena el dato(carácter)
 
 void loop() 
 {
   if (BT.available())
-  // if text arrived in from BT serial...
+  // si hay información desde el bluetooth 
   {
-    a=(BT.read());
+    a=(BT.read()); //utilizamos el pin 13 para activar el led y asegurarnos que realmente tenemos comunicación
     if (a=='1')
     {
       digitalWrite(13, HIGH);
@@ -118,6 +118,6 @@ void loop()
       BT.println("Send '1' to turn LED on");
       BT.println("Send '2' to turn LED on");
     }   
-    // you can add more "if" statements with other characters to add more commands
+    // podemos seguir añadiendo "if" y aumentar las habilidades de nuestro NIBBLECAR
   }
 }
