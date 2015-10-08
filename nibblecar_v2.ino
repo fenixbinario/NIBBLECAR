@@ -1,6 +1,7 @@
 /*
 NIBBLECAR Bluetooth
 Dibujo de las conexiones en www.moviolab.es
+Proyecto realizado por J.R alías @FenixBinario
 
 ARDUINO   L293D(Puente H)        
   5          10
